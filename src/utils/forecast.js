@@ -5,17 +5,15 @@ const forecast = async (lat, long) => {
 
   try {
     const res = await axios(url);
-
-    const {summary} = res.data.daily.data[0];
-    const {temperature, precipProbability} = res.data.currently;
-    return `${summary} It is currently ${temperature} degrees out. There is a ${precipProbability} chance of rain.`;
-  
+    const { summary, temperatureHigh, temperatureLow } = res.data.daily.data[0];
+    const { temperature, precipProbability } = res.data.currently;
+    return `${summary} It is currently ${temperature} degrees out. The high today ${temperatureHigh} with a low of ${temperatureLow}. There is a ${precipProbability} chance of rain.`;
   } catch (err) {
     const errMsg =
       err.response.data.code === 400
         ? 'Unable to find location'
         : 'Unable to connect to weather service';
-        
+
     throw errMsg;
   }
 };
