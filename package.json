@@ -7,7 +7,7 @@
     "start": "node src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vinh Van",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.1",
